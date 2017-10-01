@@ -1,4 +1,4 @@
-# Exercises from section 0.6
+# Exercises from section 0.8
 
 # Secondary exercise(s):
 # * set up Bash shortcuts

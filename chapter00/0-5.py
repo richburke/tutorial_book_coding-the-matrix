@@ -155,3 +155,92 @@ print([d[k] if k in d else 'NOT PRESENT' for d in dlist])
 k = 'Frodo'
 print([d[k] if k in d else 'NOT PRESENT' for d in dlist])
 print()
+
+# 0.5.23
+print('0.5.23: Dictionary comprehension with keys 0-99 and the values being the squares of the key')
+print({k:(k**2) for k in list(range(100))})
+print()
+
+# 0.5.24
+S = ('red', 'white', 'blue')
+print('0.5.24: Dictionary comprehension that is the identity function for S ({})'.format(S))
+print({k:k for k in S})
+print()
+
+# 0.5.25
+print('0.5.25: Dictionary comprehension with keys 0-999 with each value being a list of the digits in the key')
+base = 10
+digits = set(range(10))
+print({k * base**2 + j * base + i:[k, j, i] for k in digits for j in digits for i in digits})
+#print({k:[k // base**2, (k % base**2 - k % base) // base, k % base] for k in digits})
+print()
+
+# 0.5.25.a
+print('0.5.25.a: Dictionary comprehension with keys 0-1 with each value being a list of the digits in the key')
+base = 2
+digits = {0, 1}
+print({k * base**2 + j * base + i:[k, j, i] for k in digits for j in digits for i in digits})
+print()
+
+# 0.5.26
+id2salary = {0: 1000.0, 3:990, 1:1200.50}
+names = ['Frodo', 'Bilbo', 'Golem']
+print('0.5.26: Dictionary comprehension mapping employee names ({}) to salaries'.format(names))
+print({names[id]: salary for (id, salary) in id2salary.items() if id < len(names) - 1})
+print()
+
+# 0.5.27
+print('0.5.27: Define a procedure called twice()')
+def twice(zTwice): return zTwice * 2;
+print(twice(4))
+print(twice([2, 4, 5]))
+print(twice('chars or cars'))
+#print(zTwice)  # Throws "NameError: name 'zTwice' is not defined" error
+print()
+
+# 0.5.28
+print('0.5.28: Define a procedure that returns a list each of whose elements are one more than those passed')
+def nextInts(L): return [x + 1 for x in L];
+L = [1, 5, 7]
+print(nextInts(L))
+print()
+
+# 0.5.29
+print('0.5.29: Define a procedure that returns a list each of whose elements are the cubes of those passed')
+def cubes(L): return [x ** 3 for x in L];
+L = [1, 2, 3]
+print(cubes(L))
+print()
+
+# 0.5.30
+dct = {'a': 'A', 'b': 'B', 'c':'C'}
+keylist = ['a', 'b', 'c', 'd']
+print('0.5.30: Define a procedure that returns the dictionary value ({}) associated with the ith element in a list ({})'. format(dct, keylist))
+def dict2list(dct, keylist): return [dct[k] for k in keylist if k in dct];
+print(dict2list(dct, keylist))
+print()
+
+# 0.5.31
+keylist = ['a', 'b', 'c']
+L = ['A', 'B', 'C']
+print('0.5.31: Define a procedure that returns a dictionary generated from the supplied keys ({}) and values ({})'. format(keylist, L))
+def lists2dict(keylist, L): return {k: v for k, v in zip(keylist, L)};
+print(lists2dict(keylist, L))
+print()
+
+# 0.5.32
+print('0.5.31: Define a procedure that returns the base 10 representation of 3 digit values for the supplied base')
+def all_3_digit_numbers(base, digits): return {k * base**2 + j * base + i for k in digits for j in digits for i in digits}
+# 0.5.32.a
+base = 2
+print('For base {}'.format(base))
+print(all_3_digit_numbers(base, set(range(base))))
+# 0.5.32.b
+base = 3
+print('For base {}'.format(base))
+print(all_3_digit_numbers(base, set(range(base))))
+# 0.5.32.c
+base = 10
+print('For base {}'.format(base))
+print(all_3_digit_numbers(base, set(range(base))))
+print()
